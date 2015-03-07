@@ -1,18 +1,14 @@
 #! /bin/bash
-echo 
-echo ">> directory for sorting: ${1}"
-cd ${1}
+echo
+if [ $# -ne 0 ] && [ -e ${1} ]; then
+    echo ">> directory for sorting: ${1}"
+    cd ${1}
+else
+    echo ">> please specify the full path of directory"
+    exit 1
+fi    
 
-video="video"
-audio="audio"
-pictures="pictures"
-books="books"
-archive="archives"
-jars="jars"
-utils="utils"
-torrents="torrents"
-files="files"
-dirs=(${video} ${audio} ${pictures} ${books} ${archive} ${jars} ${utils} ${torrents} ${files})
+dirs=("video" "audio" "pictures" "books" "archives" "jars" "utils" "torrents" "files")
 
 videoExts="mp4"
 audioExts="mp3,wav"
